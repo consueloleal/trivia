@@ -14,7 +14,7 @@ function setCounterZero(){
 function playGame(){
   setName();
   document.getElementById("welcome").style.display = "none";
-  document.getElementById('selectGame').innerHTML = "<p>Hola " + name + ' a continuación selecciona un tema de juego:</p><button onclick="playMovies()">Jugar con Películas</button><button onclick="playSeries()">Jugar con Series</button>';
+  document.getElementById('selectGame').innerHTML = "<p>Hola " + name + ' a continuación selecciona un tema de juego:</p><button onclick="playMovies()">Jugar con Películas</button><button onclick="playSeries()">Jugar con Series</button> <button onclick="playDibujos()"> Jugar con dibujos </button>';
 }
 
 function playMovies() {
@@ -82,9 +82,42 @@ function questionThreeSeries(answer) {
   } else {
     ++countWrong;
   }
+
+  finalResults();
+}
+function playDibujos() {
+  setCounterZero();
+  document.getElementById("selectGame").style.display = "none";
+  document.getElementById('mainContainer').innerHTML = '<img alt="Dan" src="https://i.ebayimg.com/images/g/e~8AAOSwJo1bVb5W/s-l300.jpg" ><p>Pregunta 1: ¿Cuál es el nombre del teniente de Forrest Gump?</p>  <button onclick="questionOneMovies(\'Ryan\')">A: Ryan</button> </br></br> <button onclick="questionOneMovies(\'Sammy\')">B: Sammy</button> </br></br> <button onclick="questionOneMovies(\'Dan\')">C: Dan</button>';
+}
+
+function questionOneMovies(answer) {
+  if (answer === "Dan") {
+    ++countCorrect;
+  } else {
+    ++countWrong;
+  }
+  document.getElementById('mainContainer').innerHTML = '<img alt="Voldemort" src="https://s3.wasabisys.com/wheninmanilabucket/2018/12/WATCH-Someone-Made-a-Beauty-and-Lord-Voldemort-Movie-Trailer-Because-Why-Not-200x200.jpg" ><p>Pregunta 2: ¿Cuál es el antagonista de Harry Potter?</p>  <button onclick="questionTwoMovies(\'Voldemort\')">A: Voldemort</button> </br></br> <button onclick="questionTwoMovies(\'Ron\')">B: Ron</button> </br></br> <button onclick="questionTwoMovies(\'Sauron\')">C: Sauron</button>';
+}
+
+function questionTwoMovies(answer) {
+  if (answer === "Voldemort") {
+    ++countCorrect;
+  } else {
+    ++countWrong;
+  }
+  document.getElementById('mainContainer').innerHTML = '<img alt="Golden Ticket" src="https://d9nvuahg4xykp.cloudfront.net/8592977500204506264/6209663370864993835_thumbnail.jpg" ><p>Pregunta 3: ¿Cuántos boletos dorados se repartieron en la película Charlie y la Fábrica de Chocolate?</p>  <button onclick="questionThreeMovies(10)">A: 10</button> </br></br> <button onclick="questionThreeMovies(5)">B: 5</button> </br></br> <button onclick="questionThreeMovies(7)">C: 7</button>';
+}
+
+function questionThreeMovies(answer) {
+  if (answer === 5) {
+    ++countCorrect;
+  } else {
+    ++countWrong;
+  }
   finalResults();
 }
 
 function finalResults() {
-  document.getElementById('mainContainer').innerHTML = '<p>¡Felicitaciones has terminado la trivia!</p> <span>Respuestas correctas: ' + countCorrect + '</span> </br><span>Respuestas incorrectas: ' + countWrong + '</span> </br></br><button onclick="playMovies()">Jugar con Películas</button><button onclick="playSeries()">Jugar con Series</button>';
+  document.getElementById('mainContainer').innerHTML = '<p>¡Felicitaciones has terminado la trivia!</p> <span>Respuestas correctas: ' + countCorrect + '</span> </br><span>Respuestas incorrectas: ' + countWrong + '</span> </br></br><button onclick="playMovies()">Jugar con Películas</button><button onclick="playSeries()">Jugar con Series</button><button onclick="playDibujos()"> Jugar con dibujos </button>';
 }
